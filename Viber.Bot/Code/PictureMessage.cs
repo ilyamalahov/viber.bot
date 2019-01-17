@@ -12,10 +12,9 @@ namespace Viber.Bot
 		/// <summary>
 		/// Initializes a new instance of the <see cref="PictureMessage"/> class.
 		/// </summary>
-		public PictureMessage()
-			: base(MessageType.Picture)
+		public PictureMessage() : base(MessageType.Picture)
 		{
-			Text = String.Empty;
+			Text = string.Empty;
 		}
 
 		/// <summary>
@@ -35,5 +34,11 @@ namespace Viber.Bot
 		/// </summary>
 		[JsonProperty("thumbnail")]
 		public string Thumbnail { get; set; }
-	}
+
+        /// <summary>
+        /// Picture file name
+        /// </summary>
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+    }
 }
