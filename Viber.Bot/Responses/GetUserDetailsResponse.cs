@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Viber.Bot.Models;
 
 namespace Viber.Bot
 {

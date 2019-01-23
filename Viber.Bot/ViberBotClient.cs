@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using System.Net;
+using Viber.Bot.Models;
+using Viber.Bot.Enums;
+using Viber.Bot.Messages;
+using Viber.Bot.Exceptions;
+using Viber.Bot.Interfaces;
 
 namespace Viber.Bot
 {
@@ -65,8 +70,9 @@ namespace Viber.Bot
 			_httpClient = proxy == null
 				? new HttpClient()
 				: new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = true });
+
 			_httpClient.BaseAddress = new Uri(BaseAddress);
-			_httpClient.DefaultRequestHeaders.Add(XViberAuthTokenHeader, new[] { authenticationToken });
+			_httpClient.DefaultRequestHeaders.Add(XViberAuthTokenHeader, authenticationToken);
 
 			_hashAlgorithm = new HMACSHA256(Encoding.UTF8.GetBytes(authenticationToken));
 		}
@@ -74,14 +80,9 @@ namespace Viber.Bot
 		/// <inheritdoc />
 		public async Task<ICollection<EventType>> SetWebhookAsync(string url, ICollection<EventType> eventTypes = null)
 		{
-			var result = await RequestApiAsync<SetWebhookResponse>(
-				"set_webhook",
-				new Dictionary<string, object>
-				{
-					{ "url", url },
-					{ "event_types", eventTypes }
-				});
-			return result.EventTypes;
+			var result = await RequestApiAsync<SetWebhookResponse>("set_webhook", new { url, event_types = eventTypes });
+
+            return result.EventTypes;
 		}
 
 		/// <inheritdoc />
@@ -93,9 +94,8 @@ namespace Viber.Bot
 		/// <inheritdoc />
 		public async Task<UserDetails> GetUserDetailsAsync(string id)
 		{
-			var response = await RequestApiAsync<GetUserDetailsResponse>(
-				"get_user_details",
-				new Dictionary<string, object> { { "id", id } });
+			var response = await RequestApiAsync<GetUserDetailsResponse>("get_user_details", new { id });
+
 			return response.User;
 		}
 
@@ -170,12 +170,9 @@ namespace Viber.Bot
 		/// <param name="data">Post data.</param>
 		/// <typeparam name="T">Response type.</typeparam>
 		/// <returns><typeparamref name="T"/> object.</returns>
-		private async Task<T> RequestApiAsync<T>(string method, object data = null)
-			where T : ApiResponseBase, new()
+		private async Task<T> RequestApiAsync<T>(string method, object data = null) where T : ApiResponseBase, new()
 		{
-			var requestJson = data == null
-				? "{}"
-				: JsonConvert.SerializeObject(data, _jsonSettings);
+			var requestJson = JsonConvert.SerializeObject(data, _jsonSettings);
 			var response = await _httpClient.PostAsync(method, new StringContent(requestJson));
 			var responseJson = await response.Content.ReadAsStringAsync();
 			var result = JsonConvert.DeserializeObject<T>(responseJson);

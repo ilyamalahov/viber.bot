@@ -1,4 +1,4 @@
-﻿namespace Viber.Bot
+﻿namespace Viber.Bot.Enums
 {
 	/// <summary>
 	/// Error codes.

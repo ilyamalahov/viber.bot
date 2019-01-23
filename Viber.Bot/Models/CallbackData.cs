@@ -1,8 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Viber.Bot.Enums;
+using Viber.Bot.Messages;
 
-namespace Viber.Bot
+namespace Viber.Bot.Models
 {
 	/// <summary>
 	/// Webhook callback data.

@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Viber.Bot
+namespace Viber.Bot.Enums
 {
 	/// <summary>
 	/// Keyboard action type.

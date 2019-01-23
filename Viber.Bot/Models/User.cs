@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Viber.Bot
+namespace Viber.Bot.Models
 {
 	/// <summary>
 	/// Viber user.

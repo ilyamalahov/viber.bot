@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Viber.Bot.Enums;
+using Viber.Bot.Messages;
+using Viber.Bot.Models;
 
-namespace Viber.Bot
+namespace Viber.Bot.Interfaces
 {
 	/// <summary>
 	/// Viber API.

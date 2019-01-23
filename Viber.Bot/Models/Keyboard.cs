@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Viber.Bot.Enums;
 
-namespace Viber.Bot
+namespace Viber.Bot.Models
 {
 	/// <summary>
 	/// Keyboard object.

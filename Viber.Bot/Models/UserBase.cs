@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Viber.Bot
+namespace Viber.Bot.Models
 {
 	/// <summary>
 	/// Base user info.
 	/// </summary>
-	public class UserBase : IUserBase
+	public class UserBase
 	{
 		/// <inheritdoc />
 		[JsonProperty("name")]

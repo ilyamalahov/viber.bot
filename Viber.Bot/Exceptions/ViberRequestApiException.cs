@@ -1,6 +1,7 @@
 ﻿using System;
+using Viber.Bot.Enums;
 
-namespace Viber.Bot
+namespace Viber.Bot.Exceptions
 {
 	/// <summary>
 	/// Viber request API exception.

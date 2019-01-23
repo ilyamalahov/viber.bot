@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Viber.Bot.Enums;
+using Viber.Bot.Models;
 
-namespace Viber.Bot
+namespace Viber.Bot.Messages
 {
 	/// <summary>
 	/// Contact message.

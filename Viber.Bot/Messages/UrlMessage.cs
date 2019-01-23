@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Viber.Bot.Enums;
 
-namespace Viber.Bot
+namespace Viber.Bot.Messages
 {
 	/// <summary>
 	/// Url message.

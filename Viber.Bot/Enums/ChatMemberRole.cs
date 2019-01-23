@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Viber.Bot
+namespace Viber.Bot.Enums
 {
 	/// <summary>
 	/// Chat member role.

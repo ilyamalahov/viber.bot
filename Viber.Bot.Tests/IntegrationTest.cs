@@ -2,6 +2,9 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Viber.Bot.Interfaces;
+using Viber.Bot.Messages;
+using Viber.Bot.Models;
 
 namespace Viber.Bot.Tests
 {

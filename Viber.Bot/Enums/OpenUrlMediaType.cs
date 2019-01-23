@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Viber.Bot
+namespace Viber.Bot.Enums
 {
 	/// <summary>
 	/// Determine the url media type.
