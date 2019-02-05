@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Viber.Bot.Enums;
-using Viber.Bot.Interfaces;
 using Viber.Bot.Models;
 
 namespace Viber.Bot

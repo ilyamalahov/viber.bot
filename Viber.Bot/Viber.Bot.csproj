@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\Viber.Bot.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Viber.Bot.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -4,26 +4,34 @@ using Viber.Bot.Enums;
 using Viber.Bot.Messages;
 using Viber.Bot.Models;
 
-namespace Viber.Bot.Interfaces
+namespace Viber.Bot
 {
 	/// <summary>
 	/// Viber API.
 	/// </summary>
 	public interface IViberBotClient
-	{
-		/// <summary>
-		/// Setting the webhook.
-		/// </summary>
-		/// <param name="url">Account webhook URL to receive callbacks &amp; messages from users.</param>
-		/// <param name="eventTypes">Indicates the types of Viber events that the account owner would like to be notified about. Don’t include this parameter in your request to get all events.</param>
-		/// <returns>Collection of <see cref="EventType"/>.</returns>
-		Task<ICollection<EventType>> SetWebhookAsync(string url, ICollection<EventType> eventTypes = null);
+    {
+        /// <summary>
+        /// Validate hash.
+        /// </summary>
+        /// <param name="signatureHeader">Value of "X-Viber-Content-Signature" header.</param>
+        /// <param name="jsonMessage">JSON message.</param>
+        /// <returns><c>true</c> if valid.</returns>
+        bool ValidateWebhookHash(string signatureHeader, string jsonMessage);
 
-		/// <summary>
-		/// The account’s details as registered in Viber. The account admin will be able to edit most of these details from his Viber client.
-		/// </summary>
-		/// <returns>The account’s details as registered in Viber.</returns>
-		Task<IAccountInfo> GetAccountInfoAsync();
+        /// <summary>
+        /// Setting the webhook.
+        /// </summary>
+        /// <param name="url">Account webhook URL to receive callbacks &amp; messages from users.</param>
+        /// <param name="eventTypes">Indicates the types of Viber events that the account owner would like to be notified about. Don’t include this parameter in your request to get all events.</param>
+        /// <returns>Collection of <see cref="EventType"/>.</returns>
+        Task<ICollection<EventType>> SetWebhookAsync(string url, ICollection<EventType> eventTypes = null);
+
+        /// <summary>
+        /// The account’s details as registered in Viber. The account admin will be able to edit most of these details from his Viber client.
+        /// </summary>
+        /// <returns>The account’s details as registered in Viber.</returns>
+        Task<IAccountInfo> GetAccountInfoAsync();
 
 		/// <summary>
 		/// The details of a specific Viber user based on his unique user ID. The user ID can be obtained from the callbacks sent to the account regarding user’s actions. This request can be sent twice during a 12 hours period for each user ID.
@@ -95,12 +103,11 @@ namespace Viber.Bot.Interfaces
 		/// <returns>Message token.</returns>
 		Task<long> SendKeyboardMessageAsync(KeyboardMessage message);
 
-		/// <summary>
-		/// Validate hash.
-		/// </summary>
-		/// <param name="signatureHeader">Value of "X-Viber-Content-Signature" header.</param>
-		/// <param name="jsonMessage">JSON message.</param>
-		/// <returns><c>true</c> if valid.</returns>
-		bool ValidateWebhookHash(string signatureHeader, string jsonMessage);
+        /// <summary>
+        /// Sends <see cref="CarouselMessage"/> to Viber user.
+        /// </summary>
+        /// <param name="message">Instance of <see cref="CarouselMessage"/>.</param>
+        /// <returns>Message token.</returns>
+        Task<long> SendCarouselMessageAsync(CarouselMessage message);
 	}
 }

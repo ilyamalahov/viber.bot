@@ -23,13 +23,13 @@ namespace Viber.Bot.Enums
 		OpenUrl = 2,
 
 		/// <summary>
-		/// The client will share be able to share their location via a <see cref="LocationMessage"/> object.
+		/// The client will share be able to share their location via a <see cref="Messages.LocationMessage"/> object.
 		/// </summary>
 		[EnumMember(Value = "location-picker")]
 		LocationPicker = 3,
 
 		/// <summary>
-		/// The client will share be able to share its phone number via a <see cref="ContactMessage"/> object.
+		/// The client will share be able to share its phone number via a <see cref="Messages.ContactMessage"/> object.
 		/// </summary>
 		[EnumMember(Value = "share-phone")]
 		SharePhone = 4,

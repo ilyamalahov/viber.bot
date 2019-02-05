@@ -5,8 +5,11 @@ using System.Text;
 using Viber.Bot.Enums;
 using Viber.Bot.Models;
 
-namespace Viber.Bot.Interfaces
+namespace Viber.Bot
 {
+    /// <summary>
+    /// Account information
+    /// </summary>
     public interface IAccountInfo
     {
         /// <summary>
