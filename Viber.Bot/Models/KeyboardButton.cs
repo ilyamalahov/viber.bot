@@ -8,14 +8,15 @@ namespace Viber.Bot.Models
 {
     /// <summary>
     /// Keyboard button.
-    /// /// </summary>
-    public class KeyboardButton:IXmlSerializable
+    /// </summary>
+    public class KeyboardButton
     {
         /// <summary>
         /// Type of action pressing the button will perform.
         /// </summary>
         /// <remarks>Default value: <see cref="KeyboardActionType.Reply"/>.</remarks>
         [JsonProperty("ActionType")]
+        [XmlElement("actionType")]
         public KeyboardActionType? ActionType { get; set; }
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>For ActionType 'reply' - text. For ActionType 'open-url' - Valid URL.</remarks>
         [JsonProperty("ActionBody")]
-        [XmlAttribute("actionBody")]
+        [XmlElement("actionBody")]
         public string ActionBody { get; set; }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace Viber.Bot.Models
         /// If the text is too long to display on the button it will be cropped and ended with "…".
         /// </remarks>
         [JsonProperty("Text")]
-        [XmlAttribute("text")]
+        [XmlElement("text")]
         public string Text { get; set; }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Possible values: 1-6. Default value: 6.</remarks>
         [JsonProperty("Columns")]
-        [XmlAttribute("columns")]
+        [XmlElement("columns")]
         public int? Columns { get; set; }
 
         /// <summary>
@@ -50,21 +51,21 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Possible values: 1-2. Default value: 1.</remarks>
         [JsonProperty("Rows")]
-        [XmlAttribute("rows")]
+        [XmlElement("rows")]
         public int? Rows { get; set; }
 
         /// <summary>
         /// Background color of button (valid color HEX value).
         /// </summary>
         [JsonProperty("BgColor")]
-        [XmlAttribute("bgColor")]
+        [XmlElement("bgColor")]
         public string BackgroundColor { get; set; }
 
         /// <summary>
         /// Determine whether the user action is presented in the conversation.
         /// </summary>
         [JsonProperty("Silent")]
-        [XmlAttribute("silent")]
+        [XmlElement("silent")]
         public bool? Silent { get; set; }
 
         /// <summary>
@@ -75,14 +76,14 @@ namespace Viber.Bot.Models
         /// Max size: 500 kb.
         /// </remarks>
         [JsonProperty("BgMediaType")]
-        [XmlAttribute("bgMediaType")]
+        [XmlElement("bgMediaType")]
         public BackgroundMediaType? BackgroundMediaType { get; set; }
 
         /// <summary>
         /// URL for background media content (picture or gif). Will be placed with aspect to fill logic.
         /// </summary>
         [JsonProperty("BgMedia")]
-        [XmlAttribute("bgMedia")]
+        [XmlElement("bgMedia")]
         public string BackgroundMedia { get; set; }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Default value: true.</remarks>
         [JsonProperty("BgLoop")]
-        [XmlAttribute("bgLoop")]
+        [XmlElement("bgLoop")]
         public bool? BackgroundLoop { get; set; }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>JPEG and PNG files are supported. Max size: 500 kb.</remarks>
         [JsonProperty("Image")]
-        [XmlAttribute("image")]
+        [XmlElement("image")]
         public string Image { get; set; }
 
         /// <summary>
@@ -108,7 +109,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Default value: <see cref="Enums.TextVerticalAlign.Middle"/>.</remarks>
         [JsonProperty("TextVAlign")]
-        [XmlAttribute("textVerticalAlign")]
+        [XmlElement("textVerticalAlign")]
         public TextVerticalAlign? TextVerticalAlign { get; set; }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Default value: <see cref="Enums.TextHorizontalAlign.Center"/>.</remarks>
         [JsonProperty("TextHAlign")]
-        [XmlAttribute("textHorizontalAlign")]
+        [XmlElement("textHorizontalAlign")]
         public TextHorizontalAlign? TextHorizontalAlign { get; set; }
 
         /// <summary>
@@ -124,7 +125,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Possible values: per padding 0-12. Default value: [12,12,12,12].</remarks>
         [JsonProperty("TextPaddings")]
-        [XmlAttribute("textPaddings")]
+        [XmlElement("textPaddings")]
         public int[] TextPaddings { get; set; }
 
         /// <summary>
@@ -132,7 +133,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Possible values: 0-100. Default value: 100.</remarks>
         [JsonProperty("TextOpacity")]
-        [XmlAttribute("textOpacity")]
+        [XmlElement("textOpacity")]
         public int? TextOpacity { get; set; }
 
         /// <summary>
@@ -140,7 +141,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Default value: <see cref="Enums.TextSize.Regular"/>.</remarks>
         [JsonProperty("TextSize")]
-        [XmlAttribute("textSize")]
+        [XmlElement("textSize")]
         public TextSize? TextSize { get; set; }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Default value: <see cref="OpenUrlType.Internal"/>.</remarks>
         [JsonProperty("OpenURLType")]
-        [XmlAttribute("openURLType")]
+        [XmlElement("openURLType")]
         public OpenUrlType? UrlOpenType { get; set; }
 
         /// <summary>
@@ -156,28 +157,14 @@ namespace Viber.Bot.Models
         /// </summary>
         /// <remarks>Default value: <see cref="OpenUrlMediaType.NotMedia"/>.</remarks>
         [JsonProperty("OpenURLMediaType")]
-        [XmlAttribute("openURLMediaType")]
+        [XmlElement("openURLMediaType")]
         public OpenUrlMediaType? UrlMediaType { get; set; }
 
         /// <summary>
         /// Background gradient to use under text, Works only when TextVAlign is equal to top or bottom	Hex value (6 characters)
         /// </summary>
         [JsonProperty("TextBgGradientColor")]
-        [XmlAttribute("textBgGradientColor")]
+        [XmlElement("textBgGradientColor")]
         public string TextBackgroundGradientColor { get; set; }
-
-        public XmlSchema GetSchema()
-        {
-			return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-			Columns = reader.ReadContentAsInt();
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-        }
     }
 }

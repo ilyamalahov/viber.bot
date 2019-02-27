@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace Viber.Bot.Models
 {
@@ -11,12 +12,14 @@ namespace Viber.Bot.Models
 		/// Longitude of the <see cref="Location"/>.
 		/// </summary>
 		[JsonProperty("lon")]
+		[XmlElement("lon")]
 		public double Lon { get; set; }
 
 		/// <summary>
 		/// Latitude of the <see cref="Location"/>.
 		/// </summary>
 		[JsonProperty("lat")]
+		[XmlElement("lat")]
 		public double Lat { get; set; }
 	}
 }
